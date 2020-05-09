@@ -5,7 +5,7 @@ export default function Header() {
     let navItems = [];
     for(let i = 0 ; i < navs.length ; i++) {
         const nav = navs[i];
-        navItems.push(<Nav.Link key={ 'nav-' + i } href={ nav.hred }>{ nav.name }</Nav.Link>);
+        navItems.push(<Nav.Link key={ 'nav-' + i } href={ nav.href }>{ nav.name }</Nav.Link>);
     }
     return (
         <Navbar bg="dark" variant="dark" className="mb-4">

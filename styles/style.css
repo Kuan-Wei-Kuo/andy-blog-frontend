@@ -1,0 +1,51 @@
+html, body {
+    background-color: #fff !important;
+    font-family: Microsoft JhengHei;
+}
+
+.pagination {
+    display: inline-block;
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.pagination > li {
+    display: inline;
+}
+
+.pagination > li > a, .pagination > li > span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    text-decoration: none;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none; 
+}
+
+.pagination > li > a:hover, .pagination > li > span:hover {    
+    z-index: 3;
+    border-bottom: 3px solid #9e9e9e;
+}
+
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active>span:hover {
+    z-index: 0;
+}
+
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active>span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+    z-index: 3;
+    cursor: default;
+    font-weight: bold;
+    border-bottom: 3px solid #2196F3;
+}
+
+.pagination > .next > a {
+    margin-left: 15px;
+}
+
+.pagination > .previous > a {
+    margin-right: 15px;
+}

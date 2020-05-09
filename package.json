@@ -3,15 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node server.js",
     "build": "next build",
-    "start": "next start"
+    "start": "NODE_ENV=production node server.js"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
+    "cacheable-response": "^2.0.9",
+    "express": "^4.17.1",
+    "moment": "^2.25.3",
     "next": "9.3.5",
     "react": "16.13.1",
     "react-bootstrap": "^1.0.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-markdown": "^4.3.1",
+    "react-paginate": "^6.3.2",
+    "react-syntax-highlighter": "^12.2.1",
+    "sass": "^1.26.5"
   }
 }
