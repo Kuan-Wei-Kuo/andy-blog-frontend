@@ -8,7 +8,7 @@ import Layout from '../components/Layout'
 class Categories extends React.Component {
 
     static async getInitialProps({asPath}) {
-        const categories = await axios.get('http://localhost:8080/weblog/api/categories')
+        const categories = await axios.get('http://localhost:8080/andy.blog/public/api/categories')
         .then(response => {
             let data = response.data;
             let categories = [];

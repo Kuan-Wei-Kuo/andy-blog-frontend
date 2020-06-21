@@ -1,7 +1,7 @@
 import { Container, Navbar, Nav } from 'react-bootstrap'
 
 export default function Header() {
-    const navs = process.env.blog.navs;
+    const navs = process.env.header.navs;
     let navItems = [];
     for(let i = 0 ; i < navs.length ; i++) {
         const nav = navs[i];
@@ -10,7 +10,7 @@ export default function Header() {
     return (
         <Navbar bg="dark" variant="dark" className="mb-4">
             <Container>
-                <Navbar.Brand href="/">{ process.env.blog.name }</Navbar.Brand>
+                <Navbar.Brand href="/">{ process.env.header.name }</Navbar.Brand>
                 <Nav className="justify-content-end">
                     { navItems }
                 </Nav>

@@ -14,7 +14,7 @@ export default class ArchivesPage extends React.Component {
 
   static async getInitialProps({ res, query, asPath }) {
     const page = query.page
-    const source = await axios.get(`http://localhost:8080/weblog/api/posts?page=${page - 1}&size=${defaultSize}`)
+    const source = await axios.get(`${process.env.API_HOST}/posts?page=${page - 1}&size=${defaultSize}`)
       .then(response => {
         return response.data
       });
@@ -78,8 +78,8 @@ export default class ArchivesPage extends React.Component {
               containerClassName={'pagination'}
               subContainerClassName={'pages pagination'}
               activeClassName={'active'}
-              previousLabel={'Previous'}
-              nextLabel={'Next'}
+              previousLabel={process.env.previous}
+              nextLabel={process.env.next}
               breakLabel={'...'}
               initialPage={page}
               disableInitialCallback={true}

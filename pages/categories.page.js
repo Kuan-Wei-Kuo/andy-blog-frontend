@@ -11,11 +11,10 @@ const defaultSize = 20;
 class CategoriesPage extends React.Component {
 
   static async getInitialProps({ query, asPath }) {
-    const url = `http://localhost:8080/weblog/api/posts?page=${query.page - 1}&size=${defaultSize}&category=${query.category}`;
-    const source = await axios.get(url)
-      .then(response => {
-        return response.data;
-      });
+    const url = `${process.env.API_HOST}/posts?page=${query.page - 1}&size=${defaultSize}&category=${query.category}`;
+    const source = await axios.get(url).then(response => {
+      return response.data;
+    });
     return {
       category: query.category,
       page: source.page,
@@ -72,8 +71,8 @@ class CategoriesPage extends React.Component {
               containerClassName={'pagination'}
               subContainerClassName={'pages pagination'}
               activeClassName={'active'}
-              previousLabel={'上一頁'}
-              nextLabel={'下一頁'}
+              previousLabel={process.env.previous}
+              nextLabel={process.env.next}
               breakLabel={'...'}
               initialPage={page}
               disableInitialCallback={true}

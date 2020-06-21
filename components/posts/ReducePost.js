@@ -23,7 +23,7 @@ const ReducePost = (props) => {
         {chips}
       </div>
       <ReactMarkdown source={limitContent} renderers={{ code: CodeBlock }} />
-      <div className="text-center"><a href={href}>Read More</a></div>
+      <div className="text-center"><a href={href}>Read more</a></div>
     </div>
   )
 }
