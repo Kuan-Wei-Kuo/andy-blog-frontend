@@ -14,7 +14,6 @@ export default class PostPage extends React.Component {
 
   static async getInitialProps({ query, asPath }) {
     const page = query.page
-    console.log(page)
     const source = await axios.get(`${process.env.API_HOST}/posts?page=${page - 1}&size=${defaultSize}`).then(response => {
       return response.data;
     })

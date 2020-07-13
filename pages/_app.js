@@ -1,7 +1,4 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/post.scss';
-import '../styles/archive.scss';
-import '../styles/style.css';
+import '../styles/style.scss';
 
 function MyApp({ Component, pageProps, router }) {
     return <Component {...pageProps} />

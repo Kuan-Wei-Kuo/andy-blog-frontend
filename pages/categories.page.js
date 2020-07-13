@@ -55,12 +55,12 @@ class CategoriesPage extends React.Component {
   }
 
   render() {
-    const { page, total, category } = this.props;
+    const { page, total, category, asPath } = this.props;
     return (
       <Layout
         title={category + ' - 安迪的部落格'}
-        description="標籤文章列表"
-        asPath={this.props.asPath}
+        description={process.env.archives.description}
+        asPath={asPath}
       >
         <Container>
           <div>

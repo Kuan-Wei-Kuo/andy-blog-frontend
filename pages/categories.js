@@ -7,42 +7,42 @@ import Layout from '../components/Layout'
 
 class Categories extends React.Component {
 
-    static async getInitialProps({asPath}) {
-        const categories = await axios.get('http://localhost:8080/andy.blog/public/api/categories')
-        .then(response => {
-            let data = response.data;
-            let categories = [];
-            for(let i = 0 ; i < data.length ; i++) {
-                categories.push(data[i].name)
-            }
-            return categories;
-        });
-        return { categories: categories, asPath: asPath }
-    }
-
-    generateChips = () => {
-        let categories = this.props.categories;
-        let chips = [];
-        for(let i in categories) {
-            chips.push(<Badge key={categories[i]} href={'/categories/' + categories[i]} className="mr-2" variant="dark">{categories[i]}</Badge>)
+  static async getInitialProps({ asPath }) {
+    const categories = await axios.get('http://localhost:8080/andy.blog/public/api/categories')
+      .then(response => {
+        let data = response.data;
+        let categories = [];
+        for (let i = 0; i < data.length; i++) {
+          categories.push(data[i].name)
         }
-        return chips;
+        return categories;
+      });
+    return { categories: categories, asPath: asPath }
+  }
+
+  generateChips = () => {
+    let categories = this.props.categories;
+    let chips = [];
+    for (let i in categories) {
+      chips.push(<a href={`/categories/${categories[i]}`} key={`category-${i}`} className="badge badge-primary mr-2" variant="primary">{categories[i]}</a>)
     }
+    return chips;
+  }
 
 
-    render() {
-        return(
-            <Layout
-                title="標籤 - 安迪的部落格" 
-                description="標籤數量統計" 
-                asPath={this.props.asPath}
-            >
-                <Container>
-                    <div className="post-tags">{this.generateChips()}</div>
-                </Container>
-            </Layout>
-        )
-    }
+  render() {
+    return (
+      <Layout
+        title={process.env.archives.title}
+        description={process.env.archives.description}
+        asPath={this.props.asPath}
+      >
+        <Container>
+          {this.generateChips()}
+        </Container>
+      </Layout>
+    )
+  }
 
 }
 

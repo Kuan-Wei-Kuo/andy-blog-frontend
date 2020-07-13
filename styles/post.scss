@@ -1,31 +1,16 @@
-@import './variable.scss';
-
 .post {
-    .post-title {
-        font-size: 2rem;
-        line-height: 2rem;
-        a {
-            display: inline-block;
-            color: $primary;
-            text-decoration: none;
-            border-bottom: 2px solid transparent;
-        }
-        a:hover {
-            border-bottom: 2px solid $primary;
-        }
-    }
-    .post-subtitle {
+    .timeseries {
         font-size: .8rem;
         line-height: .8rem;
         color: $secondry;
     }
-    .post-categories {
+    .categories {
         color: $secondry;
     }
 }
 
 .post+.post {
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid $secondry;
 }
 
 .post+.post-paginate {
@@ -33,17 +18,9 @@
 }
 
 .post:first-child {
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid $secondry;
 }
 
 .post:last-child {
     border-bottom: 1px solid transparent;
-}
-
-.post-paginate {
-    display: flex;
-    a {
-        flex: 1 1 auto;
-        text-align: center;
-    }
 }

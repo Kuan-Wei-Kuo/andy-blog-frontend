@@ -1,0 +1,21 @@
+@import './variable.scss';
+@import './blog.bootstrap.scss';
+@import './pagination.scss';
+@import './post.scss';
+@import './archive.scss';
+
+html, body {
+    background-color: #fff !important;
+    font-family: Microsoft JhengHei;
+}
+
+.blog-link {
+    display: inline-block;
+    text-decoration: none;
+    color: $primary;
+}
+
+.blog-link:hover {
+    text-decoration: none;
+    color: $secondry;
+}

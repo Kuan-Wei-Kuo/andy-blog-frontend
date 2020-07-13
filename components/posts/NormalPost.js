@@ -1,26 +1,44 @@
 import moment from 'moment';
-
-import { Badge } from 'react-bootstrap';
-
 import ReactMarkdown from 'react-markdown';
+
 import CodeBlock from '../CodeBlock';
 
-const NormalPost = (props) => {
-  let categories = props.source.categories;
-  let chips = [];
+function renderCategories(categories) {
+  let badges = [];
   for (let i in categories) {
-    chips.push(<Badge key={`category-${i}`} className="mr-2" variant="dark">{categories[i]}</Badge>)
+    badges.push(
+      <a
+        key={`category-${i}`} 
+        className="badge badge-primary mr-2"
+        href={`/categories/${categories[i]}`}
+        variant="primary"
+      >
+        {categories[i]}
+      </a>
+    );
   }
+  return badges;
+}
+
+const NormalPost = (props) => {
+  const { title, content, categories, date } = props.source;
   return (
-    <div className="post pt-5 pb-5  ">
-      <div className="post-title mb-2">{props.source.title}</div>
-      <div className="post-subtitle mb-2">
-        <span>{moment(props.source.date).format('MMM D, YYYY')}</span>
+    <div className="post pt-4 pb-4 mb-4">
+      <h1>
+        {title}
+      </h1>
+
+      <div className="timeseries">
+        <span>{moment(date).format(process.env.dateFormat.post)}</span>
       </div>
-      <div className="post-categories mb-2">
-        {chips}
+      <div className="categories">
+        {renderCategories(categories)}
       </div>
-      <ReactMarkdown source={props.source.content} renderers={{ code: CodeBlock }} />
+
+      <ReactMarkdown
+        source={content}
+        renderers={{ code: CodeBlock }} 
+      />
     </div>
   )
 }

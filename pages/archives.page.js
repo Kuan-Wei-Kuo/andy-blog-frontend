@@ -22,18 +22,26 @@ export default class ArchivesPage extends React.Component {
   }
 
   getArchiveItems() {
-    const posts = this.props.source.content
-    let dictionary = {}
-    let archiveItems = []
+    const posts = this.props.source.content;
+    let dictionary = {};
+    let archiveItems = [];
     for(const post of posts) {
-      const year = moment(post.createTime).format('YYYY')
-      const href = moment(post.createTime).format('/YYYY/MM/DD/') + post.slug
+      let { id, title, date, slug } = post
+      const year = new Date(date).getFullYear();
+      const href = `/${moment(date).format(process.env.dateFormat.slash)}/${slug}`;
+
       if (!dictionary[year])
-        dictionary[year] = []
+        dictionary[year] = [];
+
       dictionary[year].push(
-        <li key={`archive-${year}-${post.id}`} className="archive-list-item mb-2">
-          <span className="mr-2">{moment(post.createTime).format('YYYY-MM-DD')}</span>
-          <a href={href}>{post.title}</a>
+        <li
+          key={`archive-${year}-${id}`}
+          className="archive-list-item mb-1"
+        >
+          <span className="mr-2">
+            {moment(date).format(process.env.dateFormat.dash)}
+          </span>
+          <a className="blog-link" href={href}>{title}</a>
         </li>
       )
     }
@@ -44,8 +52,8 @@ export default class ArchivesPage extends React.Component {
     );
     for (const archiveKey of archiveKeys) {
       archiveItems.push(
-        <div className="archive" key={`archive -${archiveKey}`}>
-          <div className="archive-title">{archiveKey}</div>
+        <div className="archive" key={`archive-${archiveKey}`}>
+          <h2>{archiveKey}</h2>
           <ol>{dictionary[archiveKey]}</ol>
         </div>
       )
@@ -54,25 +62,27 @@ export default class ArchivesPage extends React.Component {
   }
 
   onPageChange = (page) => {
-    let nextPage = page.selected + 1
+    let nextPage = page.selected + 1;
     if (nextPage == 1)
-      Router.push('/archive')
+      Router.push('/archive');
     else
-      Router.push(`/archive/page/${nextPage}`)
+      Router.push(`/archive/page/${nextPage}`);
   }
 
   render() {
+    const { asPath } = this.props;
     const { page, total } = this.props.source;
     return (
       <Layout
-        title="歸檔 - 安迪的部落格"
-        description="依據年份區分的文章列表"
-        asPath={this.props.asPath}
+        title={process.env.archives.title}
+        description={process.env.archives.description}
+        asPath={asPath}
       >
         <Container>
           <div>
             {this.getArchiveItems()}
           </div>
+          
           <div className="text-center">
             <ReactPaginate
               containerClassName={'pagination'}
